@@ -1,0 +1,108 @@
+.hero-banner {
+    background: url('https://via.placeholder.com/1500x500?text=Military+Family+Support') no-repeat center center/cover;
+    color: white;
+    text-align: center;
+    padding: 100px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Overlay for readability */
+    z-index: -1;
+}
+
+.hero-content {
+    max-width: 900px;
+}
+
+.hero-content h2 {
+    font-size: 3.5em;
+    margin-bottom: 20px;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.hero-content p {
+    font-size: 1.4em;
+    margin-bottom: 40px;
+    line-height: 1.6;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+.hero-cta {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.hero-button {
+    display: inline-block;
+    padding: 15px 35px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.hero-button.primary {
+    background-color: #007bff;
+    color: white;
+}
+
+.hero-button.primary:hover {
+    background-color: #0056b3;
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 123, 255, 0.4);
+}
+
+.hero-button.secondary {
+    background-color: #28a745;
+    color: white;
+}
+
+.hero-button.secondary:hover {
+    background-color: #218838;
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(40, 167, 69, 0.4);
+}
+
+@media (max-width: 768px) {
+    .hero-banner {
+        padding: 80px 15px;
+    }
+    .hero-content h2 {
+        font-size: 2.5em;
+    }
+    .hero-content p {
+        font-size: 1.1em;
+    }
+    .hero-button {
+        width: 100%;
+        max-width: 280px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-banner {
+        padding: 60px 10px;
+    }
+    .hero-content h2 {
+        font-size: 2em;
+    }
+    .hero-content p {
+        font-size: 1em;
+    }
+}

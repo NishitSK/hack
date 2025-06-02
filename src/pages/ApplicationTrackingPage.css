@@ -1,0 +1,110 @@
+.tracking-form {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    max-width: 600px;
+    margin: 40px auto;
+}
+
+.tracking-form .form-group label {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.tracking-form .form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1.1em;
+    box-sizing: border-box;
+}
+
+.track-submit-button {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+    display: block; /* Make button full width on smaller screens */
+    width: 100%;
+}
+
+.track-submit-button:hover {
+    background-color: #0056b3;
+}
+
+.status-message {
+    text-align: center;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 30px;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.status-message.not-found {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.application-details-card {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    margin-top: 40px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.application-details-card h3 {
+    color: #004d40;
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+.application-details-card p {
+    font-size: 1.05em;
+    line-height: 1.6;
+    color: #444;
+    margin-bottom: 10px;
+}
+
+.application-details-card strong {
+    color: #333;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 0.9em;
+    text-transform: capitalize;
+    margin-left: 10px;
+}
+
+.status-badge.status-under-review-by-ksb {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.status-badge.status-approved-card-dispatched {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+/* Add more status styles as needed */

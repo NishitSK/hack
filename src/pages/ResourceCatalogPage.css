@@ -1,0 +1,95 @@
+.resource-filters {
+    background-color: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    margin-bottom: 40px;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.resource-filters .form-group {
+    margin-bottom: 0; /* Override default form-group margin */
+    flex-grow: 1;
+    min-width: 250px; /* Ensure inputs don't get too small */
+}
+
+.resource-filters label {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.resource-filters select,
+.resource-filters input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+
+.resource-list-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.resource-item-card {
+    background-color: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.resource-item-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+.resource-item-card h3 {
+    color: #007bff;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.resource-type,
+.resource-condition,
+.resource-location {
+    font-size: 0.95em;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.resource-item-card p {
+    font-size: 0.95em;
+    color: #555;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+.view-resource-button {
+    display: inline-block;
+    background-color: #28a745; /* Green for marketplace buttons */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    align-self: flex-start;
+}
+
+.view-resource-button:hover {
+    background-color: #218838;
+}

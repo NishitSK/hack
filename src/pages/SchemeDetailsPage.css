@@ -1,0 +1,203 @@
+.scheme-details-page {
+    background-color: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    margin-top: 30px;
+}
+
+.scheme-details-page h2 {
+    color: #004d40;
+    font-size: 2.8em;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.scheme-category-detail {
+    text-align: center;
+    color: #888;
+    font-size: 1.1em;
+    margin-bottom: 30px;
+    font-style: italic;
+}
+
+.scheme-detail-section {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px dashed #eee;
+}
+
+.scheme-detail-section:last-of-type {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.scheme-detail-section h3 {
+    color: #007bff;
+    font-size: 1.8em;
+    margin-bottom: 15px;
+    border-left: 5px solid #007bff;
+    padding-left: 10px;
+}
+
+.scheme-detail-section p,
+.scheme-detail-section ul {
+    font-size: 1.05em;
+    line-height: 1.7;
+    color: #444;
+}
+
+.scheme-detail-section ul {
+    list-style-type: disc;
+    margin-left: 25px;
+    padding: 0;
+}
+
+.scheme-detail-section ul li {
+    margin-bottom: 8px;
+}
+
+.eligibility-form {
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 25px;
+    margin-bottom: 20px;
+}
+
+.eligibility-form .form-group {
+    margin-bottom: 15px;
+}
+
+.eligibility-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+.eligibility-form input[type="text"],
+.eligibility-form input[type="number"],
+.eligibility-form select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+
+.eligibility-form .checkbox-group {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.eligibility-form .checkbox-group input {
+    width: auto;
+    margin-right: 10px;
+}
+
+.check-eligibility-button {
+    background-color: #28a745;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-top: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.check-eligibility-button:hover {
+    background-color: #218838;
+}
+
+.eligibility-result {
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.eligibility-result.eligible {
+    background-color: #e6ffed;
+    color: #1a6d32;
+    border: 1px solid #b3e6c3;
+}
+
+.eligibility-result.not-eligible {
+    background-color: #ffebe6;
+    color: #a32222;
+    border: 1px solid #ffb3b3;
+}
+
+.full-eligibility-text h4 {
+    margin-top: 25px;
+    margin-bottom: 10px;
+    color: #333;
+    font-size: 1.3em;
+}
+
+.full-eligibility-text ul {
+    list-style-type: circle;
+    margin-left: 20px;
+    padding: 0;
+}
+
+.back-button, .apply-now-button {
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    margin-top: 30px;
+    font-size: 1.05em;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.back-button {
+    background-color: #6c757d;
+    color: white;
+    margin-right: 15px;
+}
+
+.back-button:hover {
+    background-color: #5a6268;
+}
+
+.apply-now-button {
+    background-color: #007bff;
+    color: white;
+}
+
+.apply-now-button:hover {
+    background-color: #0056b3;
+}
+
+@media (max-width: 768px) {
+    .scheme-details-page {
+        padding: 20px;
+    }
+    .scheme-details-page h2 {
+        font-size: 2em;
+    }
+    .scheme-detail-section h3 {
+        font-size: 1.5em;
+    }
+    .full-eligibility-text ul {
+        margin-left: 15px;
+    }
+    .back-button, .apply-now-button {
+        display: block;
+        width: 100%;
+        text-align: center;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+}

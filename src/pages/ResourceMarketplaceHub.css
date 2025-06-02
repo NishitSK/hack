@@ -1,0 +1,11 @@
+/* Reuses styles from WelfareSchemesHub.css for .page-section and .features-grid.
+   No new specific CSS needed here unless you want different styling for this hub. */
+/* If you want different styles, uncomment and modify below */
+
+
+.resource-marketplace-hub-section h2 {
+    color: #004d40;
+}
+.resource-marketplace-hub-section .feature-card h3 {
+    color: #007bff;
+}
