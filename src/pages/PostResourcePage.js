@@ -10,45 +10,65 @@ const PostResourcePage = () => {
     condition: '',
     description: '',
     location: '',
-    image: null, // For file input
+    contactEmail: '',
+    contactPhone: '',
+    price: 0,
   });
-  const [submissionStatus, setSubmissionStatus] = useState(null); // 'success' or 'error'
+  const [submissionStatus, setSubmissionStatus] = useState(null);
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
-    if (name === 'image') {
-      setFormData(prev => ({ ...prev, [name]: files[0] }));
-    } else {
-      setFormData(prev => ({ ...prev, [name]: value }));
-    }
+    setFormData(prev => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmissionStatus(null); // Reset status
+    setSubmissionStatus('loading');
 
-    // In a real application:
-    // 1. Validate formData
-    // 2. Create FormData object for file upload:
-    //    const dataToSend = new FormData();
-    //    for (const key in formData) {
-    //      dataToSend.append(key, formData[key]);
-    //    }
-    // 3. Send to backend API (e.g., using fetch or axios)
-    //    const response = await fetch('/api/resources/post', {
-    //      method: 'POST',
-    //      body: dataToSend, // Use dataToSend for file upload
-    //      // Headers are often set automatically by browser for FormData
-    //    });
-    // 4. Handle response and setSubmissionStatus
+    const dataToSend = {
+      title: formData.title,
+      description: formData.description,
+      category: formData.type,
+      location: formData.location,
+      price: parseFloat(formData.price) || 0,
+      contactEmail: formData.contactEmail,
+      contactPhone: formData.contactPhone,
+      contactPerson: "N/A",
+      status: 'Available',
+    };
 
-    console.log('Resource to be posted:', formData);
-    // Simulate successful submission
-    setTimeout(() => {
+    try {
+      const response = await fetch('http://localhost:5000/api/resources', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(dataToSend),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || `HTTP error! status: ${response.status}`);
+      }
+
       setSubmissionStatus('success');
-      setFormData({ title: '', type: '', condition: '', description: '', location: '', image: null }); // Clear form
-      // navigate('/marketplace/catalog'); // Optionally navigate to catalog
-    }, 1500);
+      alert('Resource posted successfully!');
+      setFormData({
+        title: '',
+        type: '',
+        condition: '',
+        description: '',
+        location: '',
+        contactEmail: '',
+        contactPhone: '',
+        price: 0,
+      });
+      navigate('/marketplace/catalog');
+    } catch (err) {
+      console.error('Error posting resource:', err);
+      setSubmissionStatus('error');
+      alert(`Failed to post resource: ${err.message}`);
+    }
   };
 
   return (
@@ -77,9 +97,11 @@ const PostResourcePage = () => {
           <label htmlFor="type">Resource Type:</label>
           <select id="type" name="type" value={formData.type} onChange={handleChange} required>
             <option value="">Select Type</option>
-            <option value="Book">Book</option>
+            <option value="Books">Books</option>
             <option value="Equipment">Equipment</option>
+            <option value="Services">Services</option>
             <option value="Housing">Housing</option>
+            <option value="Vehicles">Vehicles</option>
             <option value="Other">Other</option>
           </select>
         </div>
@@ -107,11 +129,22 @@ const PostResourcePage = () => {
         </div>
 
         <div className="form-group">
-          <label htmlFor="image">Upload Image (Optional):</label>
-          <input type="file" id="image" name="image" onChange={handleChange} accept="image/*" />
+          <label htmlFor="price">Price (₹):</label>
+          <input type="number" id="price" name="price" value={formData.price} onChange={handleChange} min="0" />
+        </div>
+        
+        <div className="form-group">
+          <label htmlFor="contactEmail">Contact Email:</label>
+          <input type="email" id="contactEmail" name="contactEmail" value={formData.contactEmail} onChange={handleChange} />
+        </div>
+        <div className="form-group">
+          <label htmlFor="contactPhone">Contact Phone:</label>
+          <input type="tel" id="contactPhone" name="contactPhone" value={formData.contactPhone} onChange={handleChange} />
         </div>
 
-        <button type="submit" className="post-button">Post Resource</button>
+        <button type="submit" className="post-button" disabled={submissionStatus === 'loading'}>
+          {submissionStatus === 'loading' ? 'Posting...' : 'Post Resource'}
+        </button>
       </form>
     </div>
   );

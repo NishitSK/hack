@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import './SchemeCatalogPage.css';
+import './SchemeCatalogPage.css'; 
 
 const SchemeCatalogPage = () => {
   const [schemes, setSchemes] = useState([]);
@@ -8,28 +8,25 @@ const SchemeCatalogPage = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // In a real app, you'd fetch this from a backend API
-    // fetch('/api/schemes')
-    //   .then(response => response.json())
-    //   .then(data => {
-    //     setSchemes(data);
-    //     setLoading(false);
-    //   })
-    //   .catch(err => {
-    //     setError('Failed to fetch schemes.');
-    //     setLoading(false);
-    //   });
+    const fetchSchemes = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/api/schemes');
 
-    // Mock data for demonstration
-    const mockSchemes = [
-      { id: 'pmss', name: 'Prime Minister\'s Scholarship Scheme (PMSS)', description: 'Financial assistance for higher education to wards of Ex-servicemen.', category: 'Education' },
-      { id: 'echs', name: 'Ex-Servicemen Contributory Health Scheme (ECHS)', description: 'Healthcare facilities for Ex-servicemen and their dependents.', category: 'Healthcare' },
-      { id: 'afbcwf', name: 'Armed Forces Battle Casualties Welfare Fund (AFBCWF)', description: 'Financial aid to next of kin of battle casualties.', category: 'Financial' },
-      { id: 'dgr-resettlement', name: 'DGR Resettlement & Training', description: 'Vocational training and placement assistance for retiring personnel.', category: 'Resettlement' },
-      { id: 'housing-subsidy', name: 'Housing Loan Subsidy', description: 'Subsidies on home loans for eligible Ex-servicemen.', category: 'Housing' },
-    ];
-    setSchemes(mockSchemes);
-    setLoading(false);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        setSchemes(data);
+      } catch (err) {
+        console.error("Failed to fetch schemes:", err);
+        setError('Failed to fetch schemes. Please ensure the backend is running.');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchSchemes();
   }, []);
 
   if (loading) return <div className="loading-message">Loading schemes...</div>;
@@ -37,19 +34,22 @@ const SchemeCatalogPage = () => {
 
   return (
     <div className="page-section">
-      <h2>Scheme Catalog</h2>
+      <h2>Welfare Scheme Catalog</h2>
       <p>Browse through the various welfare schemes. Click on a scheme to view detailed information, eligibility criteria, and application process.</p>
 
       <div className="scheme-list-grid">
-        {schemes.map(scheme => (
-          <div key={scheme.id} className="scheme-item-card">
-            <h3>{scheme.name}</h3>
-            <p className="scheme-category">Category: {scheme.category}</p>
-            <p>{scheme.description.substring(0, 100)}...</p>
-            <Link to={`/welfare-schemes/catalog/${scheme.id}`} className="view-details-button">View Details</Link>
-          </div>
-        ))}
-        {schemes.length === 0 && <p className="no-results">No schemes found.</p>}
+        {schemes.length === 0 ? (
+          <p className="no-results">No schemes found. Add some from your backend!</p>
+        ) : (
+          schemes.map(scheme => (
+            <div key={scheme._id} className="scheme-item-card"> 
+              <h3>{scheme.title}</h3> 
+              <p className="scheme-category">Category: {scheme.category}</p>
+              <p>{scheme.description.substring(0, 100)}...</p>
+              <Link to={`/welfare-schemes/catalog/${scheme._id}`} className="view-details-button">View Details</Link> {/* Changed from scheme.id to scheme._id */}
+            </div>
+          ))
+        )}
       </div>
     </div>
   );

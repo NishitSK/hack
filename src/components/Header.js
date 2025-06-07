@@ -1,13 +1,13 @@
 import React from 'react';
 import './Header.css';
+import militaryLogo from '../images/military-logo.jpg';
 
 const Header = () => {
   return (
     <header className="app-header">
       <div className="header-content-wrapper">
         <div className="logo-section">
-          {/* You can replace this with an actual image logo */}
-          <img src="https://via.placeholder.com/60x60?text=LOGO" alt="Military Welfare Portal Logo" className="app-logo" />
+          <img src="/images/military-logo.jpg"  alt="Military Welfare Portal Logo" className="app-logo" />
           <div className="site-title">
             <h1>Military Welfare Portal</h1>
             <p>Empowering Our Heroes and Their Families</p>

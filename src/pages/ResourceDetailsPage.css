@@ -1,139 +1,311 @@
+/* src/pages/ResourceDetailsPage.css */
+
 .resource-details-page {
-    background-color: white;
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    margin-top: 30px;
+  padding: 20px;
+  max-width: 900px;
+  margin: 20px auto;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
 }
 
-.resource-details-page h2 {
-    color: #004d40;
-    font-size: 2.5em;
-    margin-bottom: 10px;
-    text-align: center;
+.back-button {
+  display: inline-block;
+  margin-bottom: 25px;
+  padding: 10px 15px;
+  background-color: #6c757d; /* Grey button */
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
 }
 
-.resource-type-detail {
-    text-align: center;
-    color: #888;
-    font-size: 1.1em;
-    margin-bottom: 30px;
-    font-style: italic;
+.back-button:hover {
+  background-color: #5a6268;
 }
 
-.resource-main-info {
-    display: flex;
-    gap: 40px;
-    margin-bottom: 40px;
-    flex-wrap: wrap; /* Allow wrapping */
+.resource-detail-title {
+  text-align: center;
+  color: #007bff; /* Blue for the title */
+  font-size: 2.5em;
+  margin-bottom: 30px;
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 15px;
 }
 
-.resource-image-container {
-    flex: 1;
-    min-width: 300px; /* Minimum width for image */
-    text-align: center;
+.resource-actions {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 30px;
 }
 
-.resource-detail-image {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+.edit-button, .delete-button {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.resource-text-details {
-    flex: 2;
-    min-width: 300px; /* Minimum width for text details */
+.edit-button {
+  background-color: #007bff; /* Blue for edit */
+  color: white;
 }
 
-.resource-text-details p {
-    font-size: 1.1em;
-    line-height: 1.8;
-    color: #444;
-    margin-bottom: 15px;
+.edit-button:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
 }
 
-.resource-text-details strong {
-    color: #333;
+.delete-button {
+  background-color: #dc3545; /* Red for delete */
+  color: white;
 }
 
-.messaging-section {
-    background-color: #f8f8f8;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 30px;
-    margin-top: 30px;
-}
-
-.messaging-section h3 {
-    color: #007bff;
-    font-size: 1.8em;
-    margin-bottom: 15px;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 10px;
-}
-
-.messaging-section p {
-    font-size: 1em;
-    color: #666;
-    margin-bottom: 20px;
-}
-
-.message-form textarea {
-    width: 100%;
-    padding: 15px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 1.05em;
-    min-height: 120px;
-    resize: vertical;
-    box-sizing: border-box;
-    margin-bottom: 15px;
-}
-
-.send-message-button {
-    background-color: #28a745;
-    color: white;
-    padding: 12px 30px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1.1em;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-}
-
-.send-message-button:hover {
-    background-color: #218838;
-}
-
-.back-to-catalog-button {
-    background-color: #6c757d;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
-    margin-bottom: 20px;
-    display: inline-block;
-    transition: background-color 0.3s ease;
-}
-
-.back-to-catalog-button:hover {
-    background-color: #5a6268;
+.delete-button:hover {
+  background-color: #c82333;
+  transform: translateY(-2px);
 }
 
 
+.resource-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.info-item {
+  background-color: #f0f8ff; /* Light blue background for info items */
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid #cce0ff;
+  display: flex;
+  flex-direction: column;
+}
+
+.info-item strong {
+  color: #333;
+  font-size: 1.1em;
+  margin-bottom: 5px;
+}
+
+.info-item span, .info-item p {
+  color: #555;
+  font-size: 1em;
+  line-height: 1.6;
+}
+
+.info-item a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.info-item a:hover {
+  text-decoration: underline;
+}
+
+.full-width {
+  grid-column: 1 / -1; /* Makes this item span all columns */
+}
+
+.contact-section {
+  background-color: #e6f7ff; /* Slightly different background for contact */
+  border-color: #b3e0ff;
+}
+
+.contact-section h3 {
+  color: #0056b3;
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 1.3em;
+}
+
+.price-tag {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #28a745; /* Green for price */
+}
+
+.status-available {
+  color: #28a745; /* Green */
+  font-weight: bold;
+}
+
+.status-claimed {
+  color: #ffc107; /* Orange */
+  font-weight: bold;
+}
+
+.status-expired {
+  color: #dc3545; /* Red */
+  font-weight: bold;
+}
+
+.loading-message, .error-message, .no-resource-found {
+  text-align: center;
+  padding: 50px;
+  font-size: 1.2em;
+  color: #777;
+}
+
+.error-message {
+  color: #dc3545;
+  font-weight: bold;
+}
+
+/* --- Edit Resource Form Modal (reusing styles from ResourceCatalogPage.css modal) --- */
+.edit-resource-form-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure it's above other content */
+}
+
+.edit-resource-form-modal .modal-content {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  max-width: 600px;
+  width: 90%;
+  max-height: 90vh; /* Limit height for scrollability */
+  overflow-y: auto; /* Enable scrolling if content overflows */
+  position: relative; /* Needed for positioning the close button */
+}
+
+.edit-resource-form-modal .modal-content h3 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #2c3e50;
+  font-size: 1.8em;
+}
+
+.edit-resource-form-modal .modal-close-button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #777;
+  cursor: pointer;
+  padding: 5px;
+  line-height: 1;
+  transition: color 0.2s ease;
+}
+
+.edit-resource-form-modal .modal-close-button:hover {
+  color: #333;
+}
+
+.edit-resource-form-modal .form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.edit-resource-form-modal .form-group label {
+  font-weight: 600;
+  margin-bottom: 8px;
+  font-size: 0.95em;
+  color: #333;
+}
+
+.edit-resource-form-modal .form-group input,
+.edit-resource-form-modal .form-group select,
+.edit-resource-form-modal .form-group textarea {
+  width: calc(100% - 24px); /* Full width minus padding */
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1em;
+  box-sizing: border-box;
+}
+
+.edit-resource-form-modal .form-group textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.edit-resource-form-modal .form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.submit-edit-button, .edit-resource-form-modal .cancel-button {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.submit-edit-button {
+  background-color: #28a745;
+  color: white;
+}
+
+.submit-edit-button:hover {
+  background-color: #218838;
+  transform: translateY(-1px);
+}
+
+/* Responsive adjustments */
 @media (max-width: 768px) {
-    .resource-details-page {
-        padding: 20px;
-    }
-    .resource-main-info {
-        flex-direction: column;
-        gap: 20px;
-    }
-    .resource-image-container,
-    .resource-text-details {
-        min-width: unset;
-    }
+  .resource-details-page {
+    padding: 15px;
+    margin: 10px auto;
+  }
+
+  .resource-detail-title {
+    font-size: 2em;
+  }
+
+  .resource-info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .back-button {
+    width: 100%;
+    text-align: center;
+  }
+
+  .resource-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .edit-button, .delete-button {
+    width: 100%;
+  }
+
+  .edit-resource-form-modal .modal-content {
+    width: 95%;
+    padding: 20px;
+  }
+
+  .edit-resource-form-modal .form-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .submit-edit-button, .edit-resource-form-modal .cancel-button {
+    width: 100%;
+  }
 }

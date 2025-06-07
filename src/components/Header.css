@@ -25,12 +25,10 @@
 }
 
 .app-logo {
-    height: 60px;
-    width: 60px;
-    border-radius: 50%;
-    background-color: white; /* Placeholder background */
-    object-fit: contain;
-    padding: 5px;
+height: 70px;
+width: auto;
+margin-right: 15px;
+object-fit: contain;
 }
 
 .site-title h1 {

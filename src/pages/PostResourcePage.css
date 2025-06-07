@@ -1,90 +1,157 @@
+/* src/pages/PostResourcePage.css */
+
+.page-section {
+  padding: 20px;
+  max-width: 900px; /* Adjusted max-width for the overall page section */
+  margin: 20px auto;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.page-section h2 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 10px;
+  font-size: 2.2em;
+}
+
+.page-section > p {
+  text-align: center;
+  color: #555;
+  margin-bottom: 25px;
+  font-size: 1.1em;
+}
+
 .post-resource-form {
-    background-color: white;
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    max-width: 700px;
-    margin: 40px auto;
+  background-color: white;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  max-width: 700px; /* Max width for the form itself */
+  margin: 40px auto; /* Centering the form */
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Increased gap for better spacing between form groups */
 }
 
-.post-resource-form .form-group {
-    margin-bottom: 25px;
+.form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 0; /* Remove default margin-bottom if gap is used on parent */
 }
 
-.post-resource-form label {
-    display: block;
-    margin-bottom: 10px;
-    font-weight: bold;
-    color: #333;
-    font-size: 1.05em;
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #333;
+  font-size: 1em; /* Standard font size for labels */
 }
 
 .post-resource-form input[type="text"],
+.post-resource-form input[type="number"],
+.post-resource-form input[type="email"],
+.post-resource-form input[type="tel"],
 .post-resource-form select,
 .post-resource-form textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 1em;
-    box-sizing: border-box;
-    transition: border-color 0.3s ease;
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1em;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .post-resource-form input[type="text"]:focus,
+.post-resource-form input[type="number"]:focus,
+.post-resource-form input[type="email"]:focus,
+.post-resource-form input[type="tel"]:focus,
 .post-resource-form select:focus,
 .post-resource-form textarea:focus {
-    border-color: #007bff;
-    outline: none;
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
 .post-resource-form textarea {
-    resize: vertical;
-    min-height: 100px;
+  resize: vertical;
+  min-height: 120px; /* Slightly increased min-height for textarea */
 }
 
 .post-resource-form input[type="file"] {
-    padding: 10px 0; /* Adjust padding for file input */
-    border: none;
+  padding: 10px 0;
+  border: none;
 }
 
-.post-button {
-    background-color: #28a745;
-    color: white;
-    padding: 15px 35px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 1.2em;
-    font-weight: bold;
-    margin-top: 20px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    display: block;
-    width: 100%;
+.post-button { /* Styles for the main submit button */
+  background-color: #28a745;
+  color: white;
+  padding: 15px 35px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-top: 20px; /* Margin above the button */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  width: 100%; /* Make the button fill the width of the form */
+  box-sizing: border-box;
 }
 
-.post-button:hover {
-    background-color: #218838;
-    transform: translateY(-2px);
+.post-button:hover:not(:disabled) {
+  background-color: #218838;
+  transform: translateY(-2px);
 }
 
-/* Reusing alert styles from GrievancesPage.css if applicable */
+.post-button:disabled {
+  background-color: #a0d9b0;
+  cursor: not-allowed;
+}
+
+/* Alert styles */
 .alert {
-    padding: 15px;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    font-weight: bold;
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  text-align: center;
+  border: 1px solid transparent; /* Add a default border */
 }
 
 .alert.success {
-    background-color: #d4edda;
-    color: #155724;
-    border-color: #c3e6cb;
+  background-color: #d4edda;
+  color: #155724;
+  border-color: #c3e6cb;
 }
 
 .alert.error {
-    background-color: #f8d7da;
-    color: #721c24;
-    border-color: #f5c6cb;
+  background-color: #f8d7da;
+  color: #721c24;
+  border-color: #f5c6cb;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .page-section {
+    padding: 15px;
+    margin: 10px auto;
+  }
+
+  .page-section h2 {
+    font-size: 1.8em;
+  }
+
+  .post-resource-form {
+    padding: 25px;
+    margin: 20px auto;
+    max-width: 95%; /* Adjust max-width for smaller screens */
+  }
+
+  .post-button {
+    padding: 12px 25px; /* Slightly smaller padding on mobile */
+    font-size: 1.1em;
+  }
 }
